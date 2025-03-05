@@ -8,6 +8,7 @@
       <th>Email</th>
       <th>Phone</th>
       <th>LinkedIn</th>
+      <th>Actions</th>
     </tr>
   </thead>
   <tbody>
@@ -18,6 +19,11 @@
         <td><%= friend.email %></td>
         <td><%= friend.phone %></td>
         <td><%= friend.linkedin %></td>
+        <td>
+          <%= link_to 'Show', friend %> |
+          <%= link_to 'Edit', edit_friend_path(friend) %> |
+          <%= link_to 'Destroy', friend, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
       </tr>
     <% end %>
   </tbody>
