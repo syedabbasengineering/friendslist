@@ -1,30 +1,37 @@
-<%= form_with(model: @friend, local: true) do |form| %>
-  <div>
-    <%= form.label :first_name %>
-    <%= form.text_field :first_name %>
-  </div>
+<%= form_with(model: friend) do |form| %>
+  <% if friend.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(friend.errors.count, "error") %> prohibited this friend from being saved:</h2>
 
-  <div>
-    <%= form.label :last_name %>
-    <%= form.text_field :last_name %>
-  </div>
+      <ul>
+        <% friend.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
 
-  <div>
-    <%= form.label :email %>
-    <%= form.text_field :email %>
+  <div class="field form-group">
+    <%= form.text_field :first_name, class:"form-control", placeholder:"First Name" %>
   </div>
-
-  <div>
-    <%= form.label :phone %>
-    <%= form.text_field :phone %>
+  <br/>
+  <div class="field form-group">
+    <%= form.text_field :last_name, class:"form-control", placeholder:"Last Name" %>
   </div>
-
-  <div>
-    <%= form.label :linkedin %>
-    <%= form.text_field :linkedin %>
+  <br/>
+  <div class="field form-group">
+    <%= form.text_field :email, class:"form-control", placeholder:"Email Address"  %>
   </div>
-
-  <div>
-    <%= form.submit "Create Friend" %>
+  <br/>
+  <div class="field form-group">
+    <%= form.text_field :phone, class:"form-control", placeholder:"Phone Number"  %>
+  </div>
+  <br/>
+  <div class="field form-group">
+    <%= form.text_field :linkedin, class:"form-control", placeholder:"Linkedin URL"  %>
+  </div>
+  <br/><br/>
+  <div class="actions">
+    <%= form.submit class:"btn btn-success" %>
   </div>
 <% end %>
